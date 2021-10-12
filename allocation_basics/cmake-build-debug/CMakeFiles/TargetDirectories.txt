@@ -1,0 +1,3 @@
+C:/Users/Admin/CLionProjects/JiPP2/allocation_basics/cmake-build-debug/CMakeFiles/allocation_basics.dir
+C:/Users/Admin/CLionProjects/JiPP2/allocation_basics/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Admin/CLionProjects/JiPP2/allocation_basics/cmake-build-debug/CMakeFiles/rebuild_cache.dir
