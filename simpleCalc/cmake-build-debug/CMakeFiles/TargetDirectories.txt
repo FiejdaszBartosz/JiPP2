@@ -1,0 +1,3 @@
+C:/Users/Admin/CLionProjects/JiPP2/simpleCalc/cmake-build-debug/CMakeFiles/simpleCalc.dir
+C:/Users/Admin/CLionProjects/JiPP2/simpleCalc/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Admin/CLionProjects/JiPP2/simpleCalc/cmake-build-debug/CMakeFiles/rebuild_cache.dir
