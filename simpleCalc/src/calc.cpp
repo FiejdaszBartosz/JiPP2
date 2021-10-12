@@ -1,44 +1,67 @@
 #include "../include/calc.h"
 
-int cal(string operation_name, int x, int y)
+float addition(float d1, float d2)
 {
-    int result;
+    float result;
 
-    /*if(operation_name == "add")
+    result = d1 + d2;
+
+    return result;
+}
+
+float subtraction(float d1, float d2)
+{
+    float result;
+
+    result = d1 - d2;
+
+    return result;
+}
+
+float multiplication(float d1, float d2)
+{
+    float result;
+
+    result = d1 * d2;
+
+    return result;
+}
+
+float division(float d1, float d2)
+{
+    float result;
+
+    result = d1 / d2;
+
+    return result;
+}
+
+float cal(string operation_name, float x, float y)
+{
+    float output;
+
+    if(operation_name == "add")
     {
-        result = x + y;
+        output = addition(x, y);
     }
     else if ( operation_name == "sub")
     {
-        result = x - y;
-    }*/
-
-    switch(operation_name)
-    {
-        case'add':
-        {
-
-        }
-        break;
-        case'sub':
-        {
-
-        }
-        break;
-        case'mul':
-        {
-
-        }
-        break;
-        case'div':
-        {
-
-        }
-        break;
-        default:
-            cout << "err";
-
+        output = subtraction(x, y);
     }
+    else if ( operation_name == "sub")
+    {
+        output = multiplication(x, y);;
+    }
+    else if ( operation_name == "div")
+    {
+        if (y != 0)
+            output = division(x, y);
+        else
+            cout << "Division by zero!" << endl;
+    }
+    else
+        cout << "Operation is not defined" << endl;
 
-    return result;
+
+    return output;
 }

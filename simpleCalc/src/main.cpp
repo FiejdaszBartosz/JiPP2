@@ -3,7 +3,7 @@
 int main(int argc, char *argv[])
 {
     string operation;
-    int x, y;
+    float x, y;
 
     //cout << "argc is: " << argc << endl;  //Debug: wypisuje liczbe podanych argumentow na wejsciu
 
@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 
 
 
-    int z;
+    float z;
 
     z = cal(operation, x, y);
 

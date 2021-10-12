@@ -3,15 +3,16 @@
 
 #include <iostream>
 #include <cstring>
+#include <string>
 #include <cstdlib>
 
 using namespace std;
 
-float addition(int d1, int d2);
-float subtraction(int d1, int d2);
-float multiplication(int d1, int d2);
-float division(int d1, int d2);
-float cal(string operation, int digit1, int dygit2);
+float addition(float d1, float d2);
+float subtraction(float d1, float d2);
+float multiplication(float d1, float d2);
+float division(float d1, float d2);
+float cal(string operation, float digit1, float dygit2);
 
 
 #endif //JIPP2_CALC_H
