@@ -8,11 +8,11 @@
 
 using namespace std;
 
-int addition(int d1, int d2);
-int subtraction(int d1, int d2);
-int volume(int d1, int d2, int d3);
+float addition(int d1, int d2);
+float subtraction(int d1, int d2);
+float volume(int d1, int d2, int d3, int d4);
 void help();
-bool cal(string operation_name, int digit1, int digit2, int digit3, int& p_result);
+bool cal(string operation_name, int digit1, int digit2, int digit3, int digit4, float& p_result);
 
 
 #endif //JIPP2_CALC_H

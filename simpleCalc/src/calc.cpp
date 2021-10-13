@@ -1,28 +1,28 @@
 #include "../include/calc.h"
 
-int addition(int d1, int d2)
+float addition(int d1, int d2)
 {
-    int result;
+    float result;
 
     result = d1 + d2;
 
     return result;
 }
 
-int subtraction(int d1, int d2)
+float subtraction(int d1, int d2)
 {
-    int result;
+    float result;
 
     result = d1 - d2;
 
     return result;
 }
 
-int volume(int d1, int d2, int d3)
+float volume(int d1, int d2, int d3, int d4)
 {
-    int result;
+    float result;
 
-    result = d1 * d2 * d3;
+    result = (d1 + d2) / 2 * d3 * d4;
 
     return result;
 }
@@ -31,13 +31,14 @@ void help()
 {
     cout << "Wprowadz parametry wejsciowe w podany sposob: " << endl << "1. Nazwa operacji: " << endl <<
     "\t add - dodawanie" << endl << "\t sub - odejmowanie" << endl << "\t vol - objetosc" << endl <<
-            "\t help - pomoc" << endl << "2. zmienna jeden" << endl << "3. zmienna dwa" << endl << "4. zmienna trzy"
-            << endl << "Zmienne jeden i dwa uzyane sa w dodawaniu i odejmowaniu a zmienna trzy w liczeniu objetosci."
-            << endl;
+            "\t help - pomoc" << endl << "2. zmienna jeden" << endl << "3. zmienna dwa" << endl <<
+            "4. zmienna trzy" << endl << "5. zmienna cztery" << endl << "Zmienne:" << endl <<
+            "\tpierwsza i druga - doawanie i odejmowanie oraz podstawy trapezu" << endl <<
+            "\ttrzecia - wysokosc trapezu" << endl << "\ttrzecia - wysokosc graniastoslupa";
 
 }
 
-bool cal(string operation_name, int digit1, int digit2, int digit3, int& p_result)
+bool cal(string operation_name, int digit1, int digit2, int digit3, int digit4, float& p_result)
 {
     if(operation_name == "add")
     {
@@ -51,7 +52,7 @@ bool cal(string operation_name, int digit1, int digit2, int digit3, int& p_resul
     }
     else if ( operation_name == "vol")
     {
-        p_result = volume(digit1, digit2, digit3);
+        p_result = volume(digit1, digit2, digit3, digit4);
         return true;
     }
     else if ( operation_name == "help")
@@ -61,7 +62,7 @@ bool cal(string operation_name, int digit1, int digit2, int digit3, int& p_resul
     }
     else
     {
-        cout << "! Operation is not defined !" << endl;
+        cout << "! Operation is not defined !" << endl << endl;
         help();
         return false;
     }
