@@ -1,67 +1,71 @@
 #include "../include/calc.h"
 
-float addition(float d1, float d2)
+int addition(int d1, int d2)
 {
-    float result;
+    int result;
 
     result = d1 + d2;
 
     return result;
 }
 
-float subtraction(float d1, float d2)
+int subtraction(int d1, int d2)
 {
-    float result;
+    int result;
 
     result = d1 - d2;
 
     return result;
 }
 
-float multiplication(float d1, float d2)
+int volume(int d1, int d2, int d3)
 {
-    float result;
+    int result;
 
-    result = d1 * d2;
+    result = d1 * d2 * d3;
 
     return result;
 }
 
-float division(float d1, float d2)
+void help()
 {
-    float result;
+    cout << "Wprowadz parametry wejsciowe w podany sposob: " << endl << "1. Nazwa operacji: " << endl <<
+    "\t add - dodawanie" << endl << "\t sub - odejmowanie" << endl << "\t vol - objetosc" << endl <<
+            "\t help - pomoc" << endl << "2. zmienna jeden" << endl << "3. zmienna dwa" << endl << "4. zmienna trzy"
+            << endl << "Zmienne jeden i dwa uzyane sa w dodawaniu i odejmowaniu a zmienna trzy w liczeniu objetosci."
+            << endl;
 
-    result = d1 / d2;
-
-    return result;
 }
 
-float cal(string operation_name, float x, float y)
+bool cal(string operation_name, int digit1, int digit2, int digit3, int& p_result)
 {
-    float output;
-
     if(operation_name == "add")
     {
-        output = addition(x, y);
+        p_result = addition(digit1, digit2);
+        return true;
     }
     else if ( operation_name == "sub")
     {
-        output = subtraction(x, y);
+        p_result = subtraction(digit1, digit2);
+        return true;
     }
-    else if ( operation_name == "sub")
+    else if ( operation_name == "vol")
     {
-        output = multiplication(x, y);;
+        p_result = volume(digit1, digit2, digit3);
+        return true;
     }
-    else if ( operation_name == "div")
+    else if ( operation_name == "help")
     {
-        if (y != 0)
-            output = division(x, y);
-        else
-            cout << "Division by zero!" << endl;
+        help();
+        return false;
     }
     else
-        cout << "Operation is not defined" << endl;
+    {
+        cout << "! Operation is not defined !" << endl;
+        help();
+        return false;
+    }
 
-
-    return output;
+    return false;
 }
+

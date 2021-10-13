@@ -2,8 +2,9 @@
 
 int main(int argc, char *argv[])
 {
-    string operation;
-    float x, y;
+    string operation = "help";
+    int x = 0, y = 0, z = 1;
+    bool flag;
 
     //cout << "argc is: " << argc << endl;  //Debug: wypisuje liczbe podanych argumentow na wejsciu
 
@@ -15,23 +16,34 @@ int main(int argc, char *argv[])
     }
     */
 
-    if (argc != 4)
-    {
-        exit(0);
-    }
-    else
+    if (argc = 4)
     {
         operation = argv[1];
         x = atoi(argv[2]);
         y = atoi(argv[3]);
+        cout << "zmienna trzy przyjela wartosc domyslna 1" << endl;
+    }
+    else if (argc = 5)
+    {
+        operation = argv[1];
+        x = atoi(argv[2]);
+        y = atoi(argv[3]);
+        z = atoi(argv[4]);
+    }
+    else
+    {
+        exit(0);
     }
 
 
 
-    float z;
 
-    z = cal(operation, x, y);
+    int result;
 
-    cout << z;
+    flag = cal(operation, x, y, z, result);
+
+    if(flag != false)
+        cout << "Wynik: " << result;
+
     return 0;
 }
