@@ -4,6 +4,6 @@ project(simpleCalc)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(simpleCalc
-                include/calc.h
-                src/calc.cpp
-                src/main.cpp)
+        include/calc.h
+        src/calc.cpp
+        src/main.cpp)
