@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    int array_size, largest_number;
+    int array_size, largest_number = 0;
     int* array;
 
     cout << "Podaj rozmiar tablicy: " << endl;
