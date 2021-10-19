@@ -9,7 +9,7 @@ int random (int a, int b)
 
     srand(time(NULL));
 
-    result = rand() % (b - a) + a;
+    result = (rand() % b) + a;
 
     return  result;
 }
