@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/Bartek/CLionProjects/JiPP2/simpleCalc/src/calc.cpp" "C:/Users/Bartek/CLionProjects/JiPP2/simpleCalc/cmake-build-debug/CMakeFiles/simpleCalc.dir/src/calc.cpp.obj"
-  "C:/Users/Bartek/CLionProjects/JiPP2/simpleCalc/src/main.cpp" "C:/Users/Bartek/CLionProjects/JiPP2/simpleCalc/cmake-build-debug/CMakeFiles/simpleCalc.dir/src/main.cpp.obj"
+  "C:/Users/Admin/CLionProjects/JiPP2/simpleCalc/src/calc.cpp" "C:/Users/Admin/CLionProjects/JiPP2/simpleCalc/cmake-build-debug/CMakeFiles/simpleCalc.dir/src/calc.cpp.obj"
+  "C:/Users/Admin/CLionProjects/JiPP2/simpleCalc/src/main.cpp" "C:/Users/Admin/CLionProjects/JiPP2/simpleCalc/cmake-build-debug/CMakeFiles/simpleCalc.dir/src/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Bartek/CLionProjects/JiPP2/simpleCalc/include/calc.h
+C:/Users/Admin/CLionProjects/JiPP2/simpleCalc/include/calc.h
 iostream
 -
 cstring
@@ -16,11 +16,11 @@ string
 cstdlib
 -
 
-<<<<<<< HEAD
 C:/Users/Admin/CLionProjects/JiPP2/simpleCalc/src/calc.cpp
-=======
-C:/Users/Bartek/CLionProjects/JiPP2/simpleCalc/src/main.cpp
->>>>>>> a6c0f4903f84e6679241ad18022e0af88ecb5fe1
 ../include/calc.h
-C:/Users/Bartek/CLionProjects/JiPP2/simpleCalc/include/calc.h
+C:/Users/Admin/CLionProjects/JiPP2/simpleCalc/include/calc.h
+
+C:/Users/Admin/CLionProjects/JiPP2/simpleCalc/src/main.cpp
+../include/calc.h
+C:/Users/Admin/CLionProjects/JiPP2/simpleCalc/include/calc.h
 
