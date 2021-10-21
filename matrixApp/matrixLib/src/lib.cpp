@@ -1,36 +1,25 @@
 #include "../include/lib.h"
 
-
-
-int** create_array(int columns, int rows)
+void  fill_array(int **array, int columns, int rows, int start_parm)
 {
-    int** temporary_array = NULL;
+    int i = 0, j = 1;
 
-    temporary_array = new int*[columns];
+    array[0][0] = start_parm;
 
-    for (int i = 0; i < rows; ++i)
+
+    for (i; i < rows; ++i)
     {
-        temporary_array[i] = new int[rows];
-    }
+        for (j; j < columns; ++j)
+        {
+            cout << "Liczba do komorki " << i << " " << j << endl;
+            cin >> array[i][j];
+        }
 
-    return temporary_array;
+        j = 0;
+    }
 }
 
-double** create_array(double columns, double rows)
-{
-    double** temporary_array = NULL;
-
-    temporary_array = new double*[columns];
-
-    for (int i = 0; i < rows; ++i)
-    {
-        temporary_array[i] = new double[rows];
-    }
-
-    return temporary_array;
-}
-
-void print_array(int** array, int columns, int rows)
+void print_array(int **array, int columns, int rows)
 {
     for (int i = 0; i < rows; ++i)
     {
