@@ -2,9 +2,14 @@
 
 using namespace std;
 
-int **creat_array(int columns, int rows);
+int **creat_matrix(int rows, int columns);
 
-void  fill_array(int **array, int columns, int rows, int start_parm);
+void fill_matrix(int **matrix, int rows, int columns);
 
-void print_array(int **array, int columns, int rows);
+void print_matrix(int **matrix, int rows, int columns);
 
+int **addMatrix(int **matrix_a, int **matrix_b, int rows_a, int columns_a);
+
+int **subtractMatrix(int **matrix_a, int **matrix_b, int rows_a, int columns_a);
+
+int **multiplyMatrix(int **matrix_a, int **matrix_b, int rows_a, int columns_a, int columns_b);

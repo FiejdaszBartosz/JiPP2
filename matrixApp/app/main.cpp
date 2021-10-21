@@ -1,24 +1,56 @@
 #include <iostream>
-#include <math.h>
 #include "../matrixLib/include/lib.h"
 
 int main()
 {
-    int rows = 2, columns = 2;
-    double start_parm = 1.0;
+    int rows = 2, columns = 2, variable_type = 0;
 
-    int **main_array = creat_array(rows, columns);
+    cout << "Czy zmienne beda typu int -> 0 czy double -> 1:" << endl;
+    cin >> variable_type;
 
-    fill_array(main_array, rows, columns, start_parm);
-
-    print_array(main_array, rows, columns);
-
-    for (int i = 0; i < 2; ++i)
+    if (variable_type == 0)
     {
-        delete[] main_array[i];
+        //integer case
+        int **matrix_a = creat_matrix(rows, columns);
+        int **matrix_b = creat_matrix(rows, columns);
+        int **matrix_r = NULL;
+
+        fill_matrix(matrix_a, rows, columns);
+        fill_matrix(matrix_b, rows, columns);
+
+        matrix_r = addMatrix(matrix_a, matrix_b, rows, columns);
+
+        print_matrix(matrix_r, rows, columns);
+
+        for (int i = 0; i < columns; ++i)
+        {
+            delete[] matrix_r[i];
+        }
+
+        delete[] matrix_r;
+
+        for (int i = 0; i < columns; ++i)
+        {
+            delete[] matrix_a[i];
+        }
+
+        delete[] matrix_a;
+
+        for (int i = 0; i < columns; ++i)
+        {
+            delete[] matrix_b[i];
+        }
+
+        delete[] matrix_b;
+    } else if (variable_type == 0)
+    {
+        //double case
+
+    } else
+    {
+        cout << "Nieznana opcja!" << endl;
     }
 
-    delete[] main_array;
 
     return 0;
 }
