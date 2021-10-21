@@ -1,5 +1,19 @@
 #include "../include/lib.h"
 
+
+int **creat_array(int columns, int rows)
+{
+    int **tmp_array= new int *[columns];
+
+
+    for (int i = 0; i < columns; i++)
+    {
+        tmp_array[i] = new int[rows];
+    }
+
+    return tmp_array;
+}
+
 void  fill_array(int **array, int columns, int rows, int start_parm)
 {
     int i = 0, j = 1;
