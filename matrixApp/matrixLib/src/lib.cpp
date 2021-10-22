@@ -152,8 +152,59 @@ int **powerMatrix(int **matrix, int rows, int columns, int m_power)
     return result_matrix;
 }
 
+int **submatrix(int **matrix, int row_index, int column_index, int matrix_size)
+{
+    int i = 0, j = 0;
+
+    int **result_matrix = NULL;
+
+    result_matrix = creat_matrix(matrix_size, matrix_size);
+
+    for (int r = 0; r < matrix_size; ++r)
+    {
+        for (int c = 0; c < matrix_size; ++c)
+        {
+            if (r != row_index && c != column_index)
+            {
+                result_matrix[i][j] = matrix[r][c];
+
+                if (j = matrix_size - 1)
+                {
+                    j = 0;
+                    i++;
+                }
+            }
+        }
+    }
+
+    return result_matrix;
+}
+
 int determinantMatrix(int **matrix, int rows, int columns)
 {
+    if(rows == 1)
+        return matrix[0][0];
+    else if (rows == 2)
+        return (matrix[0][0] * matrix[1][1]) -(matrix[0][1] - matrix[1][0]);
+    else
+    {
+        int result = 0, sign = 1;
+
+        int **temp_matrix = NULL;
+
+        for (int i = 0; i < rows; ++i)
+        {
+            temp_matrix = submatrix(matrix, 0, i, rows);
+
+            result += sign * temp_matrix[0][i] * determinantMatrix(temp_matrix, rows - 1, rows - 1);
+
+            sign = - sign;
+        }
+
+        return result;
+    }
+
+
     return 0;
 }
 

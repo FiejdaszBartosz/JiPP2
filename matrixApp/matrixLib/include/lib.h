@@ -20,6 +20,8 @@ int **transpozeMatrix(int **matrix, int rows, int columns);
 
 int **powerMatrix(int **matrix, int rows, int columns, int m_power);
 
+int **submatrix(int **matrix, int row_index, int column_index, int matrix_size);
+
 int determinantMatrix(int **matrix, int rows, int columns);
 
 bool matrixIsDiagonal(int **matrix, int rows, int columns);
