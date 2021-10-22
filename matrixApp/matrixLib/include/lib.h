@@ -13,3 +13,13 @@ int **addMatrix(int **matrix_a, int **matrix_b, int rows_a, int columns_a);
 int **subtractMatrix(int **matrix_a, int **matrix_b, int rows_a, int columns_a);
 
 int **multiplyMatrix(int **matrix_a, int **matrix_b, int rows_a, int columns_a, int columns_b);
+
+int **multiplyByScalar(int **matrix, int rows, int columns, int scalar);
+
+int **transpozeMatrix(int **matrix, int rows, int columns);
+
+int **powerMatrix(int **matrix, int rows, int columns, int m_power);
+
+int determinantMatrix(int **matrix, int rows, int columns);
+
+bool matrixIsDiagonal(int **matrix, int rows, int columns);
