@@ -3,57 +3,6 @@
 
 int main(int argc, char *argv[])
 {
-    /*
-    int rows = 2, columns = 2, variable_type = 0;
-
-    cout << "Czy zmienne beda typu int -> 0 czy double -> 1:" << endl;
-    cin >> variable_type;
-
-    if (variable_type == 0)
-    {
-        //integer case
-        int **matrix_a = creat_matrix(rows, columns);
-        int **matrix_b = creat_matrix(rows, columns);
-        int **matrix_r = NULL;
-
-        fill_matrix(matrix_a, rows, columns);
-        fill_matrix(matrix_b, rows, columns);
-
-        matrix_r = addMatrix(matrix_a, matrix_b, rows, columns);
-
-        print_matrix(matrix_r, rows, columns);
-
-        for (int i = 0; i < columns; ++i)
-        {
-            delete[] matrix_r[i];
-        }
-
-        delete[] matrix_r;
-
-        for (int i = 0; i < columns; ++i)
-        {
-            delete[] matrix_a[i];
-        }
-
-        delete[] matrix_a;
-
-        for (int i = 0; i < columns; ++i)
-        {
-            delete[] matrix_b[i];
-        }
-
-        delete[] matrix_b;
-    } else if (variable_type == 0)
-    {
-        //double case
-
-    } else
-    {
-        cout << "Nieznana opcja!" << endl;
-    }
-
-    */
-
     if (argv[1] == "help")
     {
 
@@ -65,6 +14,7 @@ int main(int argc, char *argv[])
         int rows_a = 1, columns_a = 1, variable_type = 0;
 
         int **int_matrix_a = NULL;
+        double **double_matrix_a = NULL;
 
 
         cout << "Podaj liczbe wierszy i kolumn macierzy" << endl;
@@ -102,12 +52,15 @@ int main(int argc, char *argv[])
                 cin >> columns_b;
 
                 int_matrix_b = create_matrix_int(rows_b, columns_b);
-                fill_matrix(int_matrix_a, rows_b, columns_b);
+                fill_matrix(int_matrix_b, rows_b, columns_b);
 
                 result_matrix = addMatrix(int_matrix_a, int_matrix_b, rows_a, columns_a);
 
                 cout << "Wynik to:" << endl;
                 print_matrix(result_matrix, rows_a, columns_a);
+
+                delete_matrix(int_matrix_b, rows_b);
+                delete_matrix(result_matrix, rows_b);
             }
             else if (variable_type == 1)
             {
@@ -120,6 +73,15 @@ int main(int argc, char *argv[])
                 cin >> columns_b;
 
                 double_matrix_b = create_matrix_double(rows_b, columns_b);
+                fill_matrix(int_matrix_a, rows_b, columns_b);
+
+                result_matrix = addMatrix(double_matrix_a, double_matrix_b, rows_a, columns_a);
+
+                cout << "Wynik to:" << endl;
+                print_matrix(result_matrix, rows_a, columns_a);
+
+                delete_matrix(double_matrix_b, rows_b);
+                delete_matrix(result_matrix, rows_b);
             }
         }
         else if (argv[1] == "subtractMatrix")
@@ -158,6 +120,11 @@ int main(int argc, char *argv[])
         {
             cout << "error" << endl;
         }
+
+        if (variable_type == 0)
+            delete_matrix(int_matrix_a, rows_a);
+        else if (variable_type == 1)
+            delete_matrix(double_matrix_a, rows_a);
 
     }
     else
