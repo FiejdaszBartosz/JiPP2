@@ -223,3 +223,18 @@ bool matrixIsDiagonal(int **matrix, int rows, int columns)
 
     return true;
 }
+
+bool check_command(string command)
+{
+    string command_list[10] = {"addMatrix", "subtractMatrix", "multiplyMatrix", "multiplyByScalar",
+                               "transpozeMatrix", "powerMatrix", "determinantMatrix",
+                               "matrixIsDiagonal", "sortRow", "sortRowsInMatrix"};
+
+    for (int i = 0; i < 10; ++i)
+    {
+        if(command == command_list[i])
+            return true;
+    }
+
+    return false;
+}
