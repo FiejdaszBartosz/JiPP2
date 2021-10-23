@@ -65,21 +65,22 @@ int main(int argc, char *argv[])
         int rows_a = 1, columns_a = 1, variable_type = 0;
 
         int **int_matrix_a = NULL;
-        int **int_matrix_b = NULL;
 
-        rows_a = stoi(argv[2]);
-        columns_a = stoi(argv[3]);
+
+        cout << "Podaj liczbe wierszy i kolumn macierzy" << endl;
+        cin >> rows_a;
+        cin >> columns_a;
 
         cout << "Czy zmienne beda typu int -> 0 czy double -> 1:" << endl;
         cin >> variable_type;
 
         if (variable_type == 0)
         {
-            int_matrix_a = creat_matrix(rows_a, columns_a);
+            int_matrix_a = create_matrix_int(rows_a, columns_a);
             fill_matrix(int_matrix_a, rows_a, columns_a);
         }
         else if (variable_type == 1)
-            int_matrix_a = creat_matrix(rows_a, columns_a); //poprawic trzeba
+            int_matrix_a = create_matrix_int(rows_a, columns_a);
         else
         {
             cout << "! Variable type error !" << endl;
@@ -89,28 +90,37 @@ int main(int argc, char *argv[])
 
         if (argv[1] == "addMatrix")
         {
-            int rows_b = 1, columns_b = 1;
-
-            cout << "Podaj liczbe wierszy i kolumn drugiej macierzy" << endl;
-            cin >> rows_b;
-            cin >> columns_b;
 
             if (variable_type == 0)
             {
-                int_matrix_b = creat_matrix(rows_b, columns_b);
+                int rows_b = 1, columns_b = 1;
+
+                int **int_matrix_b = NULL, **result_matrix = NULL;
+
+                cout << "Podaj liczbe wierszy i kolumn drugiej macierzy" << endl;
+                cin >> rows_b;
+                cin >> columns_b;
+
+                int_matrix_b = create_matrix_int(rows_b, columns_b);
                 fill_matrix(int_matrix_a, rows_b, columns_b);
+
+                result_matrix = addMatrix(int_matrix_a, int_matrix_b, rows_a, columns_a);
+
+                cout << "Wynik to:" << endl;
+                print_matrix(result_matrix, rows_a, columns_a);
             }
             else if (variable_type == 1)
-                int_matrix_b = creat_matrix(rows_b, columns_b); //poprawic trzeba
+            {
+                int rows_b = 1, columns_b = 1;
 
+                double **double_matrix_b = NULL, **result_matrix = NULL;
 
+                cout << "Podaj liczbe wierszy i kolumn drugiej macierzy" << endl;
+                cin >> rows_b;
+                cin >> columns_b;
 
-                //Tu skonczylem
-
-
-
-
-
+                double_matrix_b = create_matrix_double(rows_b, columns_b);
+            }
         }
         else if (argv[1] == "subtractMatrix")
         {
