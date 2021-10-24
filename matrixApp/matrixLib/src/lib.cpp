@@ -2,11 +2,11 @@
 
 bool check_command(string command)
 {
-    string command_list[10] = {"addMatrix", "subtractMatrix", "multiplyMatrix", "multiplyByScalar",
+    string command_list[9] = {"addMatrix", "subtractMatrix", "multiplyMatrix", "multiplyByScalar",
                                "transpozeMatrix", "powerMatrix", "determinantMatrix",
-                               "matrixIsDiagonal", "sortRow", "sortRowsInMatrix"};
+                               "matrixIsDiagonal", "sortRowsInMatrix"};
 
-    for (int i = 0; i < 10; ++i)
+    for (int i = 0; i < 9; ++i)
     {
         if (command == command_list[i])
             return true;
@@ -58,7 +58,7 @@ void print_matrix(int **matrix, int rows, int columns)
 
 int **addMatrix(int **matrix_a, int **matrix_b, int rows_a, int columns_a)
 {
-    int **result_matrix = NULL;
+    int **result_matrix = nullptr;
 
     result_matrix = create_matrix_int(rows_a, columns_a);
 
@@ -75,7 +75,7 @@ int **addMatrix(int **matrix_a, int **matrix_b, int rows_a, int columns_a)
 
 int **subtractMatrix(int **matrix_a, int **matrix_b, int rows_a, int columns_a)
 {
-    int **result_matrix = NULL;
+    int **result_matrix = nullptr;
 
     result_matrix = create_matrix_int(rows_a, columns_a);
 
@@ -92,7 +92,7 @@ int **subtractMatrix(int **matrix_a, int **matrix_b, int rows_a, int columns_a)
 
 int **multiplyMatrix(int **matrix_a, int **matrix_b, int rows_a, int columns_a, int columns_b)
 {
-    int **result_matrix = NULL;
+    int **result_matrix = nullptr;
 
     result_matrix = create_matrix_int(rows_a, columns_a);
 
@@ -112,7 +112,7 @@ int **multiplyMatrix(int **matrix_a, int **matrix_b, int rows_a, int columns_a, 
 
 int **multiplyByScalar(int **matrix_a, int rows_a, int columns_a, int scalar)
 {
-    int **result_matrix = NULL;
+    int **result_matrix = nullptr;
 
     result_matrix = create_matrix_int(rows_a, columns_a);
 
@@ -129,7 +129,7 @@ int **multiplyByScalar(int **matrix_a, int rows_a, int columns_a, int scalar)
 
 int **transpozeMatrix(int **matrix, int rows, int columns)
 {
-    int **result_matrix = NULL;
+    int **result_matrix = nullptr;
 
     result_matrix = create_matrix_int(rows, columns);
 
@@ -146,7 +146,7 @@ int **transpozeMatrix(int **matrix, int rows, int columns)
 
 int **powerMatrix(int **matrix, int rows, int columns, int m_power)
 {
-    int **result_matrix = NULL;
+    int **result_matrix = nullptr;
 
     result_matrix = matrix;
 
@@ -171,7 +171,7 @@ int **submatrix(int **matrix, int row_index, int column_index, int matrix_size)
 {
     int i = 0, j = 0;
 
-    int **result_matrix = NULL;
+    int **result_matrix = nullptr;
 
     result_matrix = create_matrix_int(matrix_size, matrix_size);
 
@@ -183,7 +183,7 @@ int **submatrix(int **matrix, int row_index, int column_index, int matrix_size)
             {
                 result_matrix[i][j] = matrix[r][c];
 
-                if (j = matrix_size - 1)
+                if (j == matrix_size - 1)
                 {
                     j = 0;
                     i++;
@@ -205,7 +205,7 @@ int determinantMatrix(int **matrix, int rows, int columns)
     {
         int result = 0, sign = 1;
 
-        int **temp_matrix = NULL;
+        int **temp_matrix = nullptr;
 
         for (int i = 0; i < rows; ++i)
         {
@@ -314,7 +314,7 @@ void print_matrix(double **matrix, int rows, int columns)
 
 double **addMatrix(double **matrix_a, double **matrix_b, int rows_a, int columns_a)
 {
-    double **result_matrix = NULL;
+    double **result_matrix = nullptr;
 
     result_matrix = create_matrix_double(rows_a, columns_a);
 
@@ -331,7 +331,7 @@ double **addMatrix(double **matrix_a, double **matrix_b, int rows_a, int columns
 
 double **subtractMatrix(double **matrix_a, double **matrix_b, int rows_a, int columns_a)
 {
-    double **result_matrix = NULL;
+    double **result_matrix = nullptr;
 
     result_matrix = create_matrix_double(rows_a, columns_a);
 
@@ -348,7 +348,7 @@ double **subtractMatrix(double **matrix_a, double **matrix_b, int rows_a, int co
 
 double **multiplyMatrix(double **matrix_a, double **matrix_b, int rows_a, int columns_a, int columns_b)
 {
-    double **result_matrix = NULL;
+    double **result_matrix = nullptr;
 
     result_matrix = create_matrix_double(rows_a, columns_a);
 
@@ -367,9 +367,9 @@ double **multiplyMatrix(double **matrix_a, double **matrix_b, int rows_a, int co
     return result_matrix;
 }
 
-double **multiplyByScalar(double **matrix, int rows, int columns, int scalar)
+double **multiplyByScalar(double **matrix, int rows, int columns, double scalar)
 {
-    double **result_matrix = NULL;
+    double **result_matrix = nullptr;
 
     result_matrix = create_matrix_double(rows, columns);
 
@@ -386,7 +386,7 @@ double **multiplyByScalar(double **matrix, int rows, int columns, int scalar)
 
 double **transpozeMatrix(double **matrix, int rows, int columns)
 {
-    double **result_matrix = NULL;
+    double **result_matrix = nullptr;
 
     result_matrix = create_matrix_double(rows, columns);
 
@@ -401,9 +401,9 @@ double **transpozeMatrix(double **matrix, int rows, int columns)
     return result_matrix;
 }
 
-double **powerMatrix(double **matrix, int rows, int columns, int m_power)
+double **powerMatrix(double **matrix, int rows, int columns, double m_power)
 {
-    double **result_matrix = NULL;
+    double **result_matrix = nullptr;
 
     result_matrix = matrix;
 
@@ -428,7 +428,7 @@ double **submatrix(double **matrix, int row_index, int column_index, int matrix_
 {
     int i = 0, j = 0;
 
-    double **result_matrix = NULL;
+    double **result_matrix = nullptr;
 
     result_matrix = create_matrix_double(matrix_size, matrix_size);
 
@@ -440,7 +440,7 @@ double **submatrix(double **matrix, int row_index, int column_index, int matrix_
             {
                 result_matrix[i][j] = matrix[r][c];
 
-                if (j = matrix_size - 1)
+                if (j == matrix_size - 1)
                 {
                     j = 0;
                     i++;
@@ -460,9 +460,9 @@ double determinantMatrix(double **matrix, int rows, int columns)
         return (matrix[0][0] * matrix[1][1]) - (matrix[0][1] - matrix[1][0]);
     else
     {
-        int result = 0, sign = 1;
+        double result = 0, sign = 1;
 
-        double **temp_matrix = NULL;
+        double **temp_matrix = nullptr;
 
         for (int i = 0; i < rows; ++i)
         {

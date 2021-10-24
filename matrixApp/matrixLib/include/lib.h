@@ -54,9 +54,11 @@ double **subtractMatrix(double **matrix_a, double **matrix_b, int rows_a, int co
 
 double **multiplyMatrix(double **matrix_a, double **matrix_b, int rows_a, int columns_a, int columns_b);
 
+double **multiplyByScalar(double **matrix, int rows, int columns, double scalar);
+
 double **transpozeMatrix(double **matrix, int rows, int columns);
 
-double **powerMatrix(double **matrix, int rows, int columns, int m_power);
+double **powerMatrix(double **matrix, int rows, int columns, double m_power);
 
 double **submatrix(double **matrix, int row_index, int column_index, int matrix_size);
 
