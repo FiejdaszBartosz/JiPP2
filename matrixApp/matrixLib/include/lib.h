@@ -8,7 +8,7 @@ bool check_command(string command);
 
 int **create_matrix_int(int rows, int columns);
 
-void fill_matrix(int **matrix, int rows, int columns);
+bool fill_matrix(int **matrix, int rows, int columns);
 
 void print_matrix(int **matrix, int rows, int columns);
 
@@ -40,11 +40,9 @@ void delete_matrix(int **matrix, int rows);
 
 //double
 
-
-
 double **create_matrix_double(int rows, int columns);
 
-void fill_matrix(double **matrix, int rows, int columns);
+bool fill_matrix(double **matrix, int rows, int columns);
 
 void print_matrix(double **matrix, int rows, int columns);
 

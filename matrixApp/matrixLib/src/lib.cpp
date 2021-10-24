@@ -3,8 +3,8 @@
 bool check_command(string command)
 {
     string command_list[9] = {"addMatrix", "subtractMatrix", "multiplyMatrix", "multiplyByScalar",
-                               "transpozeMatrix", "powerMatrix", "determinantMatrix",
-                               "matrixIsDiagonal", "sortRowsInMatrix"};
+                              "transpozeMatrix", "powerMatrix", "determinantMatrix",
+                              "matrixIsDiagonal", "sortRowsInMatrix"};
 
     for (int i = 0; i < 9; ++i)
     {
@@ -19,28 +19,38 @@ bool check_command(string command)
 
 int **create_matrix_int(int rows, int columns)
 {
-    int **tmp_matrix = new int *[columns];
+    int **tmp_matrix = new int *[rows];
 
-
-    for (int i = 0; i < columns; i++)
+    for (int i = 0; i < rows; i++)
     {
-        tmp_matrix[i] = new int[rows];
+        tmp_matrix[i] = new int[columns];
+
+        for (int j = 0; j < rows; ++j)
+        {
+            tmp_matrix[i][j] = 0;
+        }
     }
 
     return tmp_matrix;
 }
 
-void fill_matrix(int **matrix, int rows, int columns)
+bool fill_matrix(int **matrix, int rows, int columns)
 {
 
     for (int i = 0; i < rows; ++i)
     {
         for (int j = 0; j < columns; ++j)
         {
-            cout << "Liczba do komorki " << i << " " << j << endl;
-            cin >> matrix[i][j];
+            cout << "Liczba do komorki " << i + 1 << " " << j + 1 << endl;
+            if (!(cin >> matrix[i][j]))
+            {
+                cout << "Wprowadzono nieprawidlowy znak" << endl;
+                return false;
+            }
         }
     }
+
+    return true;
 }
 
 void print_matrix(int **matrix, int rows, int columns)
@@ -94,7 +104,7 @@ int **multiplyMatrix(int **matrix_a, int **matrix_b, int rows_a, int columns_a, 
 {
     int **result_matrix = nullptr;
 
-    result_matrix = create_matrix_int(rows_a, columns_a);
+    result_matrix = create_matrix_int(rows_a, columns_b);
 
     for (int i = 0; i < rows_a; ++i)
     {
@@ -264,9 +274,9 @@ void delete_matrix(int **matrix, int rows)
 {
     for (int i = 0; i < rows; ++i)
     {
-        delete [] matrix[i];
+        delete[] matrix[i];
     }
-    delete [] matrix;
+    delete[] matrix;
 }
 
 //double
@@ -277,26 +287,34 @@ double **create_matrix_double(int rows, int columns)
 {
     double **tmp_matrix = new double *[columns];
 
-
-    for (int i = 0; i < columns; i++)
+    for (int i = 0; i < rows; i++)
     {
-        tmp_matrix[i] = new double[rows];
-    }
+        tmp_matrix[i] = new double[columns];
 
+        for (int j = 0; j < rows; ++j)
+        {
+            tmp_matrix[i][j] = 0;
+        }
+    }
     return tmp_matrix;
 }
 
-void fill_matrix(double **matrix, int rows, int columns)
+bool fill_matrix(double **matrix, int rows, int columns)
 {
-
     for (int i = 0; i < rows; ++i)
     {
         for (int j = 0; j < columns; ++j)
         {
-            cout << "Liczba do komorki " << i << " " << j << endl;
-            cin >> matrix[i][j];
+            cout << "Liczba do komorki " << i + 1 << " " << j + 1 << endl;
+            if (!(cin >> matrix[i][j]))
+            {
+                cout << "Wprowadzono nieprawidlowy znak" << endl;
+                return false;
+            }
         }
     }
+
+    return true;
 }
 
 void print_matrix(double **matrix, int rows, int columns)
@@ -350,7 +368,7 @@ double **multiplyMatrix(double **matrix_a, double **matrix_b, int rows_a, int co
 {
     double **result_matrix = nullptr;
 
-    result_matrix = create_matrix_double(rows_a, columns_a);
+    result_matrix = create_matrix_double(rows_a, columns_b);
 
     for (int i = 0; i < rows_a; ++i)
     {
@@ -521,7 +539,7 @@ void delete_matrix(double **matrix, int rows)
 {
     for (int i = 0; i < rows; ++i)
     {
-        delete [] matrix[i];
+        delete[] matrix[i];
     }
-    delete [] matrix;
+    delete[] matrix;
 }

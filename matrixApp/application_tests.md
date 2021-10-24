@@ -1,0 +1,32 @@
+# Tests for matrixApp
+Version from commit: de9261beb8e02dab2bdef82d42b77639800b05fc
+- Menu
+  - Wrong name **PASS**
+  - Wrong input **FAIL**
+    - Adding validation of the input argument to `cin` and `fill_matrix`
+- addMatrix
+  - Adding two matrix (int) **FAIL**
+    - Doesn't finde an operation
+      - argv\[1] = operation
+    - First index in matrix is \[0]\[0] instead of \[1]\[1]
+      - In `fill_matrix` in `cout` i+1 and j+1
+  - Adding two matrix (double) **FAIL**
+    - Doesn't creat first matrix
+      - In `main` first `else if` didn't have `fill_matrix`
+  - Adding two matrix with letter on input (should be error) **PASS**
+- subtractMatrix
+  - Subtraction of two matrix (int) **PASS**
+  - Subtraction of two matrix (double) **PASS**
+  - Subtraction of two matrix with letter on input (should be error) **PASS**
+- multiplyMatrix
+  - Multiplication of two matrices (int) **FAIL**
+    - `create_matrix` functions didn't have zero value initialization
+  - Multiplication of two matrices (double) **PASS**
+  - Multiplication of two matrices (not square matrix) **FAIL**
+    - `create_matrix` had swapped columns with rows 
+  - Adding two matrix with letter on input (should be error) **PASS**
+- multiplyByScalar
+  - Matrix (int) multiplication by int **PASS**
+  - Matrix (int) multiplication by float number **PASS**
+  - Matrix (double) multiplication by int **PASS**
+  - Matrix (int) multiplication by float number **PASS**
