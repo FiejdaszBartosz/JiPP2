@@ -1,8 +1,8 @@
 # Tests for matrixApp
 Version from commit: de9261beb8e02dab2bdef82d42b77639800b05fc
 - Menu
-  - Wrong name **PASS**
-  - Wrong input **FAIL**
+  - Wrong name (should be error) **PASS**
+  - Wrong input (should be error) **FAIL**
     - Adding validation of the input argument to `cin` and `fill_matrix`
 - addMatrix
   - Adding two matrix (int) **FAIL**
@@ -30,3 +30,22 @@ Version from commit: de9261beb8e02dab2bdef82d42b77639800b05fc
   - Matrix (int) multiplication by float number **PASS**
   - Matrix (double) multiplication by int **PASS**
   - Matrix (int) multiplication by float number **PASS**
+- transpozeMatrix
+  - Matrix transposition (int) **FAIL**
+    - Transpoze matrix was created form `[rows][columns]` instead of `[columns][rows]`
+  - Matrix transposition (double) **PASS**
+  - Matrix transposition (not square) **FAIL**
+    - During printing transpoze matrix in `print_matrix` was `[rows][columns]` instead of `[columns][rows]`
+  - Add `print_matrix` before result
+  - In  `delete_matrix` should be `columns_a` instead of `rows_a`
+- powerMatrix
+  - Exponentiation matrix (int) **FAIL**
+    - Create new function with recursion
+  - Exponentiation matrix (double) **PASS**
+  - Exponentiation matrix (to third power) **PASS**
+- determinantMatrix 
+  - Determinant of 1x1 matrix **PASS**
+  - Determinant of 2x2 matrix **FAIL**
+    - In `else if` was `(matrix[0][1] - matrix[1][0])` instead of `(matrix[0][1] * matrix[1][0])`
+  - Determinant of 3x3 matrix **FAIL**
+    - In `submatrix` in `result_matrix[i][j] = matrix[r][c]` missing `j++`

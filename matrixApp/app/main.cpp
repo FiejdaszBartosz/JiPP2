@@ -1,10 +1,11 @@
 #include <iostream>
+#include <string>
 #include "../matrixLib/include/lib.h"
 
 int main(int argc, char *argv[])
 {
     string operation = "help";
-    operation = argv[1];
+    operation = argv[1];    //przypisanie do stringa nazwy funkcji ktora ma sie wykonac
 
     if (operation == "help")
     {
@@ -12,14 +13,25 @@ int main(int argc, char *argv[])
         //do napisania help
 
     }
-    else if (check_command(argv[1]))
+    else if (check_command(operation)) //sprawdzenie czy komenda podana przez urzytkownika jes obslugiwana
     {
+        /* zmienne odpowadajace za liczbe kolumn i wierszy macierzy podstawowej oraz zmienna odpowiadająca za
+        typ danych */
         int rows_a = 1, columns_a = 1, variable_type = 0;
 
+        //inicjaluzacja wskaznikow tablic
         int **int_matrix_a = nullptr;
         double **double_matrix_a = nullptr;
 
+        //wybor typu zmiennych
+        cout << "Czy zmienne beda typu int -> 0 czy double -> 1:" << endl;
+        if(!(cin >> variable_type))
+        {
+            cout << "Wprowadzono nieprawidlowy znak" << endl;
+            return 0;
+        }
 
+        //wprowadzenie liczby kolumn i wierszy dla pierwszej macierzy
         cout << "Podaj liczbe wierszy i kolumn macierzy" << endl;
         if(!(cin >> rows_a))
         {
@@ -32,22 +44,19 @@ int main(int argc, char *argv[])
             return 0;
         }
 
-        cout << "Czy zmienne beda typu int -> 0 czy double -> 1:" << endl;
-        if(!(cin >> variable_type))
-        {
-            cout << "Wprowadzono nieprawidlowy znak" << endl;
-            return 0;
-        }
-
+        //alokacja pamieci dla macierzy w zaleznosci od typu zmiennych
+        //int
         if (variable_type == 0)
         {
             int_matrix_a = create_matrix_int(rows_a, columns_a);
-            if (!fill_matrix(int_matrix_a, rows_a, columns_a))
+            if (!fill_matrix(int_matrix_a, rows_a, columns_a)) //fill_matrix wypelnia komorki macierzy
             {
+                //w razie niepowodzenia dokona dealokacji dla macierzy glownej i zakonczy program
                 delete_matrix(int_matrix_a, rows_a);
                 return 0;
             }
         }
+        //double
         else if (variable_type == 1)
         {
             double_matrix_a = create_matrix_double(rows_a, columns_a);
@@ -63,12 +72,13 @@ int main(int argc, char *argv[])
             return 0;
         }
 
-
+        //if obslugujacy poszczegolne operacje
         if (operation == "addMatrix")
         {
 
             if (variable_type == 0)
             {
+                //tworzenie macierzy pomocniczej
                 int rows_b = 1, columns_b = 1;
 
                 int **int_matrix_b = nullptr, **result_matrix = nullptr;
@@ -87,20 +97,24 @@ int main(int argc, char *argv[])
                     delete_matrix(int_matrix_a, rows_a);
                     return 0;
                 }
-
+                //wypelnienie macierzy pomocniczej
                 int_matrix_b = create_matrix_int(rows_b, columns_b);
                 if (!fill_matrix(int_matrix_b, rows_b, columns_b))
                 {
+                    //awaryjne zakonczenie programu
                     delete_matrix(int_matrix_a, rows_a);
                     delete_matrix(int_matrix_b, rows_b);
                     return 0;
                 }
 
+                //zapisanie wyniku
                 result_matrix = addMatrix(int_matrix_a, int_matrix_b, rows_a, columns_a);
 
+                //wyswietlenie wyniku
                 cout << "Wynik to:" << endl;
                 print_matrix(result_matrix, rows_a, columns_a);
 
+                //dealokacja dla macierzy pomocniczych
                 delete_matrix(int_matrix_b, rows_b);
                 delete_matrix(result_matrix, rows_b);
             }
@@ -317,7 +331,7 @@ int main(int argc, char *argv[])
                 cout << "Wynik to:" << endl;
                 print_matrix(result_matrix, rows_a, columns_a);
 
-                delete_matrix(result_matrix, rows_a);
+                delete_matrix(result_matrix, columns_a);
             }
             else if (variable_type == 1)
             {
@@ -338,7 +352,7 @@ int main(int argc, char *argv[])
                 cout << "Wynik to:" << endl;
                 print_matrix(result_matrix, rows_a, columns_a);
 
-                delete_matrix(result_matrix, rows_a);
+                delete_matrix(result_matrix, columns_a);
             }
         }
         else if (operation == "transpozeMatrix")
@@ -347,10 +361,13 @@ int main(int argc, char *argv[])
             {
                 int **result_matrix = nullptr;
 
+                cout << "Macierz przed transpozycja:" << endl;
+                print_matrix(int_matrix_a, rows_a, columns_a);
+
                 result_matrix = transpozeMatrix(int_matrix_a, rows_a, columns_a);
 
                 cout << "Wynik to:" << endl;
-                print_matrix(result_matrix, rows_a, columns_a);
+                print_matrix(result_matrix, columns_a, rows_a);
 
                 delete_matrix(result_matrix, rows_a);
             }
@@ -358,10 +375,13 @@ int main(int argc, char *argv[])
             {
                 double **result_matrix = nullptr;
 
+                cout << "Macierz przed transpozycja:" << endl;
+                print_matrix(double_matrix_a, rows_a, columns_a);
+
                 result_matrix = transpozeMatrix(double_matrix_a, rows_a, columns_a);
 
                 cout << "Wynik to:" << endl;
-                print_matrix(result_matrix, rows_a, columns_a);
+                print_matrix(result_matrix, columns_a, rows_a);
 
                 delete_matrix(result_matrix, rows_a);
             }
@@ -480,6 +500,7 @@ int main(int argc, char *argv[])
             cout << "error" << endl;
         }
 
+        //dealokacja pamieci dla tablicy glownej na koniec programu
         if (variable_type == 0)
             delete_matrix(int_matrix_a, rows_a);
         else if (variable_type == 1)

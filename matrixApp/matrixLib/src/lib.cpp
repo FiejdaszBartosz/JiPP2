@@ -1,11 +1,14 @@
 #include "../include/lib.h"
 
+//funkcja sprawdza czy podana przez uzytkownika komenda jest obslugiwana
 bool check_command(string command)
 {
+    //tablica z dostepnymi operacjami
     string command_list[9] = {"addMatrix", "subtractMatrix", "multiplyMatrix", "multiplyByScalar",
                               "transpozeMatrix", "powerMatrix", "determinantMatrix",
                               "matrixIsDiagonal", "sortRowsInMatrix"};
 
+    //sprawdza czy podana komenda wystepuje w tablicy
     for (int i = 0; i < 9; ++i)
     {
         if (command == command_list[i])
@@ -19,14 +22,17 @@ bool check_command(string command)
 
 int **create_matrix_int(int rows, int columns)
 {
+    //najpierw tworzone sa wiersze
     int **tmp_matrix = new int *[rows];
 
+    //tworzenie kolumn
     for (int i = 0; i < rows; i++)
     {
         tmp_matrix[i] = new int[columns];
 
-        for (int j = 0; j < rows; ++j)
+        for (int j = 0; j < columns; ++j)
         {
+            //przypisanie kazdej komorce macierzy wartosci 0
             tmp_matrix[i][j] = 0;
         }
     }
@@ -36,7 +42,7 @@ int **create_matrix_int(int rows, int columns)
 
 bool fill_matrix(int **matrix, int rows, int columns)
 {
-
+//wypenianie macierzy wartosciami idac po wierszach
     for (int i = 0; i < rows; ++i)
     {
         for (int j = 0; j < columns; ++j)
@@ -55,6 +61,7 @@ bool fill_matrix(int **matrix, int rows, int columns)
 
 void print_matrix(int **matrix, int rows, int columns)
 {
+    //wyswietla macierz wdluz wierszow
     for (int i = 0; i < rows; ++i)
     {
         for (int j = 0; j < columns; ++j)
@@ -68,9 +75,13 @@ void print_matrix(int **matrix, int rows, int columns)
 
 int **addMatrix(int **matrix_a, int **matrix_b, int rows_a, int columns_a)
 {
+    //tworzy macierz wynikowa
     int **result_matrix = nullptr;
 
     result_matrix = create_matrix_int(rows_a, columns_a);
+
+    /*dokonuje dodawania ze np. do komorki [0][0] w macierzy wynikowej kopiowana jest wartosc
+     powstala w wyniku dodania [0][0] macierzy a i macierzy b */
 
     for (int i = 0; i < rows_a; ++i)
     {
@@ -89,6 +100,9 @@ int **subtractMatrix(int **matrix_a, int **matrix_b, int rows_a, int columns_a)
 
     result_matrix = create_matrix_int(rows_a, columns_a);
 
+    /*dokonuje odejmowania ze np. do komorki [0][0] w macierzy wynikowej kopiowana jest wartosc
+     powstala w wyniku odejmowania [0][0] macierzy a i macierzy b */
+
     for (int i = 0; i < rows_a; ++i)
     {
         for (int j = 0; j < columns_a; ++j)
@@ -105,6 +119,9 @@ int **multiplyMatrix(int **matrix_a, int **matrix_b, int rows_a, int columns_a, 
     int **result_matrix = nullptr;
 
     result_matrix = create_matrix_int(rows_a, columns_b);
+
+    /* dokonuje mnozenia ze np. do komorki [1][1] w macierzy wynikowej kopiowana jest wartosc
+     powstala w wyniku mnozenia [1][1]a * [1][1]b + [1][2]a * [2][1]b */
 
     for (int i = 0; i < rows_a; ++i)
     {
@@ -126,6 +143,9 @@ int **multiplyByScalar(int **matrix_a, int rows_a, int columns_a, int scalar)
 
     result_matrix = create_matrix_int(rows_a, columns_a);
 
+    /* dokonuje mnozenia ze np. do komorki [0][0] w macierzy wynikowej kopiowana jest wartosc
+     powstala w wyniku mnozenia [0][0] macierzy a przez wartosc skalar */
+
     for (int i = 0; i < rows_a; ++i)
     {
         for (int j = 0; j < columns_a; ++j)
@@ -141,8 +161,10 @@ int **transpozeMatrix(int **matrix, int rows, int columns)
 {
     int **result_matrix = nullptr;
 
-    result_matrix = create_matrix_int(rows, columns);
+    //tworzy macierz pomocnicza ktora zamienione wartosci rows z colums np 3x2 bedzie 2x3
+    result_matrix = create_matrix_int(columns, rows);
 
+    //kopiuje wartosc z np [1][2]a do [2][1]b
     for (int i = 0; i < rows; ++i)
     {
         for (int j = 0; j < columns; ++j)
@@ -156,29 +178,34 @@ int **transpozeMatrix(int **matrix, int rows, int columns)
 
 int **powerMatrix(int **matrix, int rows, int columns, int m_power)
 {
-    int **result_matrix = nullptr;
-
-    result_matrix = matrix;
-
-    for (int l = 1; l < m_power; ++l)
+    //przypadek dla potegi 1 czyli zwrocenie podanej macierzy bez zmian
+    if (m_power == 1)
+        return matrix;
+    //przypadek dla potegi 1 czyli zwrocenie macierzy jednostkowej
+    else if (m_power == 0)
     {
         for (int i = 0; i < rows; ++i)
         {
             for (int j = 0; j < columns; ++j)
             {
-                for (int k = 0; k < columns; ++k)
-                {
-                    result_matrix[i][j] += result_matrix[i][k] * matrix[k][j];
-                }
+                if (i == j)
+                    matrix[i][j] = 1;
+                else
+                    matrix[i][j] = 0;
             }
         }
-    }
 
-    return result_matrix;
+        return matrix;
+    }
+    //wykonanie mnozenia macierzy z rekursywnym wykorzystaniem powerMatrix
+    else
+        return multiplyMatrix(matrix, powerMatrix(matrix, rows, columns, m_power - 1), rows, columns, columns);
 }
 
 int **submatrix(int **matrix, int row_index, int column_index, int matrix_size)
 {
+    //tworzy macierz pomocnicza "wykraslajac" odpowiedni wiersz i kolumne
+
     int i = 0, j = 0;
 
     int **result_matrix = nullptr;
@@ -189,9 +216,14 @@ int **submatrix(int **matrix, int row_index, int column_index, int matrix_size)
     {
         for (int c = 0; c < matrix_size; ++c)
         {
+            //if odpowiada za pominiecie odpowiednich wierszy i kolumn ktore zostaly podane na wejsciu
             if (r != row_index && c != column_index)
             {
-                result_matrix[i][j] = matrix[r][c];
+                //kopoiowanie do macierzy wynikowej wartosci z niepominietych komorek
+                result_matrix[i][j++] = matrix[r][c];
+
+                /* po dojsciu do konca wiersza nalezy wyzerowac wartosc do poruszania sie po wierszach
+                oraz przejsc do kolejnego */
 
                 if (j == matrix_size - 1)
                 {
@@ -207,10 +239,13 @@ int **submatrix(int **matrix, int row_index, int column_index, int matrix_size)
 
 int determinantMatrix(int **matrix, int rows, int columns)
 {
+    //przypadek dla macierzy 1x1
     if (rows == 1)
         return matrix[0][0];
+        //przypadek dla macierzy 2x2 manualne wymnozenie odpowiednich komorek
     else if (rows == 2)
-        return (matrix[0][0] * matrix[1][1]) - (matrix[0][1] - matrix[1][0]);
+        return (matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0]);
+        //dla pozostalych rozmiarow
     else
     {
         int result = 0, sign = 1;
@@ -219,10 +254,13 @@ int determinantMatrix(int **matrix, int rows, int columns)
 
         for (int i = 0; i < rows; ++i)
         {
+            //tworzymy podmacierz pomniejszona o odpowiedni wiersz i kolumne
             temp_matrix = submatrix(matrix, 0, i, rows);
 
+            //wynik obliczamy ze wzoru sign to znak ktory musi byc na zmiane plus minus
             result += sign * temp_matrix[0][i] * determinantMatrix(temp_matrix, rows - 1, rows - 1);
 
+            //zmiana znaku
             sign = -sign;
         }
 
@@ -236,6 +274,7 @@ bool matrixIsDiagonal(int **matrix, int rows, int columns)
     {
         for (int j = 0; j < columns; ++j)
         {
+            //sprawdzenie czy tylko na przekatnej wystepuja liczby a w pozostalych komorkach jest 0
             if (i != j && matrix[i][j] != 0)
             {
                 return false;
@@ -255,6 +294,7 @@ void swap(int *a, int *b)
 
 void sortRow(int *row, int columns)
 {
+    //wykonaie bublesort na wierszach od komorki 0 do n rozsnaco
     int i, j;
     for (i = 0; i < columns - 1; i++)
         for (j = 0; j < columns - i - 1; j++)
@@ -264,6 +304,7 @@ void sortRow(int *row, int columns)
 
 void sortRowsInMatrix(int **matrix, int rows, int columns)
 {
+    //wykonanie sortowania na kolejnych wierszach
     for (int i = 0; i < rows; i++)
     {
         sortRow(matrix[i], columns);
@@ -272,6 +313,7 @@ void sortRowsInMatrix(int **matrix, int rows, int columns)
 
 void delete_matrix(int **matrix, int rows)
 {
+    //usuwa macierz w odwrotnej kolejsnosci niz zostala stworzona aby nie doszlo do utraty pamieci
     for (int i = 0; i < rows; ++i)
     {
         delete[] matrix[i];
@@ -280,8 +322,8 @@ void delete_matrix(int **matrix, int rows)
 }
 
 //double
-
-
+/* funkcje sa takie same jak powyzej maja tylko zmieniony typ na double w przypadku tych
+ktore przechowuja wartosci */
 
 double **create_matrix_double(int rows, int columns)
 {
@@ -406,7 +448,7 @@ double **transpozeMatrix(double **matrix, int rows, int columns)
 {
     double **result_matrix = nullptr;
 
-    result_matrix = create_matrix_double(rows, columns);
+    result_matrix = create_matrix_double(columns, rows);
 
     for (int i = 0; i < rows; ++i)
     {
@@ -421,25 +463,25 @@ double **transpozeMatrix(double **matrix, int rows, int columns)
 
 double **powerMatrix(double **matrix, int rows, int columns, double m_power)
 {
-    double **result_matrix = nullptr;
-
-    result_matrix = matrix;
-
-    for (int l = 1; l < m_power; ++l)
+    if (m_power == 1)
+        return matrix;
+    else if (m_power == 0)
     {
         for (int i = 0; i < rows; ++i)
         {
             for (int j = 0; j < columns; ++j)
             {
-                for (int k = 0; k < columns; ++k)
-                {
-                    result_matrix[i][j] += result_matrix[i][k] * matrix[k][j];
-                }
+                if (i == j)
+                    matrix[i][j] = 1;
+                else
+                    matrix[i][j] = 0;
             }
         }
-    }
 
-    return result_matrix;
+        return matrix;
+    }
+    else
+        return multiplyMatrix(matrix, powerMatrix(matrix, rows, columns, m_power - 1), rows, columns, columns);
 }
 
 double **submatrix(double **matrix, int row_index, int column_index, int matrix_size)
@@ -456,7 +498,7 @@ double **submatrix(double **matrix, int row_index, int column_index, int matrix_
         {
             if (r != row_index && c != column_index)
             {
-                result_matrix[i][j] = matrix[r][c];
+                result_matrix[i][j++] = matrix[r][c];
 
                 if (j == matrix_size - 1)
                 {
@@ -475,7 +517,7 @@ double determinantMatrix(double **matrix, int rows, int columns)
     if (rows == 1)
         return matrix[0][0];
     else if (rows == 2)
-        return (matrix[0][0] * matrix[1][1]) - (matrix[0][1] - matrix[1][0]);
+        return (matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0]);
     else
     {
         double result = 0, sign = 1;
