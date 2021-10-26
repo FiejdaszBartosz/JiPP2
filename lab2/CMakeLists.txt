@@ -3,4 +3,5 @@ add_subdirectory(firstLib
                 przeciazenie_lab2
                 arrays_lab2
                 obsluga_bledow
-                przekazywanie_przez_wskaznik)
+                przekazywanie_przez_wskaznik
+                debug_file)
