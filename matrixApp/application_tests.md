@@ -44,8 +44,18 @@ Version from commit: de9261beb8e02dab2bdef82d42b77639800b05fc
   - Exponentiation matrix (double) **PASS**
   - Exponentiation matrix (to third power) **PASS**
 - determinantMatrix 
-  - Determinant of 1x1 matrix **PASS**
+  - Determinant of 1x1 matrix 
   - Determinant of 2x2 matrix **FAIL**
     - In `else if` was `(matrix[0][1] - matrix[1][0])` instead of `(matrix[0][1] * matrix[1][0])`
   - Determinant of 3x3 matrix **FAIL**
     - In `submatrix` in `result_matrix[i][j] = matrix[r][c]` missing `j++`
+    - In `result` was `sign * temp_matrix[0][i]` instead of `sign * matrix[0][i]`
+- matrixIsDiagonal
+  - Testing diagonal matrix 2x2 (int) **PASS**
+  - Testing diagonal matrix 3x3 (int) **PASS**
+  - Testing non diagonal matrix 2x2 (int) **PASS**
+  - Testing diagonal matrix 2x2 (double) **PASS**
+  - Testing non diagonal matrix 3x3 (double) **PASS**
+- sortRowsInMatrix
+  - Sorting 3x3 (int) **PASS**
+  - Sorting 3x3 (double) **PASS**

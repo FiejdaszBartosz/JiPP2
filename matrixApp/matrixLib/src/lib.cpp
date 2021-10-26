@@ -258,7 +258,7 @@ int determinantMatrix(int **matrix, int rows, int columns)
             temp_matrix = submatrix(matrix, 0, i, rows);
 
             //wynik obliczamy ze wzoru sign to znak ktory musi byc na zmiane plus minus
-            result += sign * temp_matrix[0][i] * determinantMatrix(temp_matrix, rows - 1, rows - 1);
+            result += sign * matrix[0][i] * determinantMatrix(temp_matrix, rows - 1, columns - 1);
 
             //zmiana znaku
             sign = -sign;
@@ -528,7 +528,7 @@ double determinantMatrix(double **matrix, int rows, int columns)
         {
             temp_matrix = submatrix(matrix, 0, i, rows);
 
-            result += sign * temp_matrix[0][i] * determinantMatrix(temp_matrix, rows - 1, rows - 1);
+            result += sign * matrix[0][i] * determinantMatrix(temp_matrix, rows - 1, columns - 1);
 
             sign = -sign;
         }
