@@ -18,6 +18,25 @@ bool check_command(string command)
     return false;
 }
 
+void help()
+{
+    cout << "Program wykonuje rozne operacje na macierzach." << endl;
+    cout << "Nalezy podac jedna z mozliwych operacji jak parametr wejsciowy funkcji main." << endl;
+    cout << "Ponizej znaduje sie tabelka z mozliwymi operacjami oraz co nalezy wpisac:" << endl << endl;
+    cout << "Dodanie macierzy A i B\t\t\t\t\t" << "addMatrix" << endl << "Odjecie macierzy B od A\t\t\t\t\t" <<
+         "subtractMatrix" << endl << "Pomnozenie macierzy A razy macierz B\t\t\t" << "multiplyMatrix" << endl <<
+         "Pommnozenie macierzy A razy skalar\t\t\t" << "multiplyByScalar" << endl
+         << "Wyznaczenie macierzy transponowanej\t\t\t" <<
+         "transpozeMatrix" << endl << "Podniesienie macierzy A do wskazanej potegi\t\t" << "powerMatrix" << endl <<
+         "Wylicznie wyznacznika macierzy A\t\t\t" << "determinantMatrix" << endl
+         << "Sprawdzenie czy macierz jest diagonalna\t\t\t" <<
+         "matrixIsDiagonal" << endl << "Posortowanie wierszow w macierzy rosnaco\t\t" << "sortRowsInMatrix" << endl
+         << endl;
+    cout << "Nastepnie wypieramy typ zmiennych ktore bedziemy wpisywac w komorki macierzy mozemy wybrac calkowite" <<
+         "(int) lub zmiennoprzecinkowe (double)" << endl;
+    cout << "Nastepnie odbywa sie wpisywanie liczb do odpowiednich komorek macierzy" << endl;
+}
+
 //int
 
 int **create_matrix_int(int rows, int columns)
@@ -181,7 +200,7 @@ int **powerMatrix(int **matrix, int rows, int columns, int m_power)
     //przypadek dla potegi 1 czyli zwrocenie podanej macierzy bez zmian
     if (m_power == 1)
         return matrix;
-    //przypadek dla potegi 1 czyli zwrocenie macierzy jednostkowej
+        //przypadek dla potegi 1 czyli zwrocenie macierzy jednostkowej
     else if (m_power == 0)
     {
         for (int i = 0; i < rows; ++i)
@@ -197,7 +216,7 @@ int **powerMatrix(int **matrix, int rows, int columns, int m_power)
 
         return matrix;
     }
-    //wykonanie mnozenia macierzy z rekursywnym wykorzystaniem powerMatrix
+        //wykonanie mnozenia macierzy z rekursywnym wykorzystaniem powerMatrix
     else
         return multiplyMatrix(matrix, powerMatrix(matrix, rows, columns, m_power - 1), rows, columns, columns);
 }

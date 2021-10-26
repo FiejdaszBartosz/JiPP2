@@ -4,6 +4,8 @@ using namespace std;
 
 bool check_command(string command);
 
+void help();
+
 //int
 
 int **create_matrix_int(int rows, int columns);

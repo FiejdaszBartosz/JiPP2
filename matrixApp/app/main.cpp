@@ -9,9 +9,7 @@ int main(int argc, char *argv[])
 
     if (operation == "help")
     {
-
-        //do napisania help
-
+        help();
     }
     else if (check_command(operation)) //sprawdzenie czy komenda podana przez urzytkownika jes obslugiwana
     {
@@ -25,7 +23,7 @@ int main(int argc, char *argv[])
 
         //wybor typu zmiennych
         cout << "Czy zmienne beda typu int -> 0 czy double -> 1:" << endl;
-        if(!(cin >> variable_type))
+        if (!(cin >> variable_type))
         {
             cout << "Wprowadzono nieprawidlowy znak" << endl;
             return 0;
@@ -33,12 +31,12 @@ int main(int argc, char *argv[])
 
         //wprowadzenie liczby kolumn i wierszy dla pierwszej macierzy
         cout << "Podaj liczbe wierszy i kolumn macierzy" << endl;
-        if(!(cin >> rows_a))
+        if (!(cin >> rows_a))
         {
             cout << "Wprowadzono nieprawidlowy znak" << endl;
             return 0;
         }
-        else if(!(cin >> columns_a))
+        else if (!(cin >> columns_a))
         {
             cout << "Wprowadzono nieprawidlowy znak" << endl;
             return 0;
@@ -56,7 +54,7 @@ int main(int argc, char *argv[])
                 return 0;
             }
         }
-        //double
+            //double
         else if (variable_type == 1)
         {
             double_matrix_a = create_matrix_double(rows_a, columns_a);
@@ -510,6 +508,7 @@ int main(int argc, char *argv[])
     else
     {
         cout << "! Nieznana komenda !" << endl;
+        help();
     }
 
 
