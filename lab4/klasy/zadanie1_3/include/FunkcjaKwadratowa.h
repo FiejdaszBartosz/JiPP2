@@ -15,6 +15,19 @@ class FunkcjaKwadratowa
     float a, b, c;
 
 public:
+
+    float get_a();
+
+    float get_b();
+
+    float get_c();
+
+    void set_a(float a);
+
+    void set_b(float b);
+
+    void set_c(float c);
+
     void wczytaj();
 
     void wypisz();

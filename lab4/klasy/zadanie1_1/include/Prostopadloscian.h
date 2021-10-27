@@ -14,6 +14,17 @@ class Prostopadloscian
     int a, b, h;
 
 public:
+    int get_a();
+
+    int get_b();
+
+    int get_h();
+
+    void set_a(int a);
+
+    void set_b(int b);
+
+    void set_h(int h);
 
     void wypelnij();
 

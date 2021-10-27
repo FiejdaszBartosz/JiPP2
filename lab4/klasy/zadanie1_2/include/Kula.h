@@ -15,6 +15,10 @@ class Kula
     double r;
 
 public:
+    double get_r();
+
+    void set_r(double r);
+
     void podaj_promien();
 
     void objetosc();

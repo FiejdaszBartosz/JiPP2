@@ -4,6 +4,15 @@
 
 #include "../include/Kula.h"
 
+double Kula::get_r()
+{
+    return r;
+}
+
+void Kula::set_r(double r)
+{
+    this->r = r;
+}
 
 void Kula::podaj_promien()
 {

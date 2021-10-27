@@ -4,18 +4,47 @@
 
 #include "../include/Prostopadloscian.h"
 
+int Prostopadloscian::get_a()
+{
+    return a;
+}
 
-    void Prostopadloscian::wypelnij()
-    {
-        cout << "Podaj a b h" << endl;
-        cin >> a >> b >> h;
-    }
+int Prostopadloscian::get_b()
+{
+    return b;
+}
 
-    void Prostopadloscian::pole()
-    {
-        int pole;
+int Prostopadloscian::get_h()
+{
+    return h;
+}
 
-        pole = 2 * (a * b + b * h + h * a);
+void Prostopadloscian::set_a(int a)
+{
+    this->a = a;
+}
 
-        cout << pole << endl;
-    }
+void Prostopadloscian::set_b(int b)
+{
+    this->a = b;
+}
+
+void Prostopadloscian::set_h(int h)
+{
+    this->a = h;
+}
+
+void Prostopadloscian::wypelnij()
+{
+    cout << "Podaj a b h" << endl;
+    cin >> a >> b >> h;
+}
+
+void Prostopadloscian::pole()
+{
+    int pole;
+
+    pole = 2 * (a * b + b * h + h * a);
+
+    cout << pole << endl;
+}
