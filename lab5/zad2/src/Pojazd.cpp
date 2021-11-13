@@ -77,12 +77,27 @@ int Pojazd::get_typ()
     return this->typ;
 }
 
-void Pojazd::set_nazwa(string nazwa)
+void Pojazd::set_nazwa(string n_nazwa)
 {
-    this->nazwa = nazwa;
+    this->nazwa = n_nazwa;
 }
 
 void Pojazd::set_numer_rej(string numer)
 {
     this->numer_rej = numer;
+}
+
+void Pojazd::wypisz_wersje()
+{
+    cout << "Obecna wersja: " << obecna_wersja_oprogramowania << endl;
+}
+
+void Pojazd::zmien_wersje()
+{
+    obecna_wersja_oprogramowania = najnowsza_wersja_oprogramowania;
+}
+
+void Pojazd::nowa_wersja(string wersja)
+{
+    najnowsza_wersja_oprogramowania = wersja;
 }
