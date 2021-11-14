@@ -4,4 +4,4 @@ project(zad2)
 set(CMAKE_CXX_STANDARD 20)
 
 include_directories(include)
-add_executable(zad2 src/main.cpp)
+add_executable(zad2 src/main.cpp include/Pojazd.h src/Pojazd.cpp)

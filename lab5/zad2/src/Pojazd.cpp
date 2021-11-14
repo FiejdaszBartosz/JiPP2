@@ -1,34 +1,34 @@
-//
-// Created by Bartosz Fiejdasz on 09/11/2021.
-//
-
 #include "../include/Pojazd.h"
+
+string Pojazd::najnowsza_wersja_oprogramowania = "1.9";
 
 Pojazd::Pojazd(int rej, string nazwa_pojazdu, int miejsca, string typ_pojazdu) :
         numer_rej(rej),
         nazwa(nazwa_pojazdu),
         liczba_miejsc(miejsca),
-        typ(typ_pojazdu)
+        typ(typ_pojazdu),
+        obecna_wersja_oprogramowania("1.0")
 {
     nazwa_pasazera = new string[liczba_miejsc];
 
     for (int i = 0; i < liczba_miejsc; ++i)
     {
-        nazwa_pasazera = "puste";
+        nazwa_pasazera[i] = "puste";
     }
 }
 
-Pojazd::Pojazd(Pojazd &kopia_pojazd) :
-        numer_rej(kopia_pojazd.numer_rej),
-        nazwa(kopia_pojazd.nazwa),
-        liczba_miejsc(kopia_pojazd.liczba_miejsc),
-        typ(kopia_pojazd.typ)
+Pojazd::Pojazd(Pojazd &oryginal_pojazd) :
+        numer_rej(oryginal_pojazd.numer_rej),
+        nazwa(oryginal_pojazd.nazwa),
+        liczba_miejsc(oryginal_pojazd.liczba_miejsc),
+        typ(oryginal_pojazd.typ),
+        obecna_wersja_oprogramowania(oryginal_pojazd.obecna_wersja_oprogramowania)
 {
-    kopia_pasazerowie = new string[liczba_miejsc];
+    nazwa_pasazera = new string[liczba_miejsc];
 
     for (int i = 0; i < liczba_miejsc; ++i)
     {
-        kopia_pasazerowie[i] = this->nazwa_pasazera[i];
+        nazwa_pasazera[i] = oryginal_pojazd.nazwa_pasazera[i];
     }
 }
 
@@ -56,7 +56,7 @@ void Pojazd::przypisz(string personalia, int miejsce)
 {
     if (miejsce <= liczba_miejsc)
     {
-        nazwa_pasazera[mijesce - 1] = personalia;
+        nazwa_pasazera[miejsce - 1] = personalia;
     }
     else
         cout << "W pojezdzie nie ma tyle miejsc" << endl;
@@ -72,7 +72,7 @@ int Pojazd::get_numer_rej()
     return this->numer_rej;
 }
 
-int Pojazd::get_typ()
+string Pojazd::get_typ()
 {
     return this->typ;
 }
@@ -82,7 +82,7 @@ void Pojazd::set_nazwa(string n_nazwa)
     this->nazwa = n_nazwa;
 }
 
-void Pojazd::set_numer_rej(string numer)
+void Pojazd::set_numer_rej(int numer)
 {
     this->numer_rej = numer;
 }

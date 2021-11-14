@@ -1,7 +1,3 @@
-//
-// Created by Bartosz Fiejdasz on 09/11/2021.
-//
-
 #ifndef EXAMPLES_POJAZD_H
 #define EXAMPLES_POJAZD_H
 
@@ -36,11 +32,11 @@ public:
 
     int get_numer_rej();
 
-    int get_typ();
+    string get_typ();
 
     void set_nazwa(string n_nazwa);
 
-    void set_numer_rej(string numer);
+    void set_numer_rej(int numer);
 
     void wypisz_wersje();
 
