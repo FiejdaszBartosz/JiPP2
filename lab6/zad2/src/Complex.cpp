@@ -4,20 +4,20 @@
 
 #include "Complex.h"
 
-Complex::Complex() : real(0), imaginary(0) {}
+Complex::Complex() : real(0), imaginary(0)
+{}
 
-Complex::Complex(double in_real, double in_imaginary) : real(in_real), imaginary(in_imaginary) {}
+Complex::Complex(double in_real, double in_imaginary) : real(in_real), imaginary(in_imaginary)
+{}
 
-double Complex::length()
+double Complex::length() const
 {
-    return sqrt( pow(real, 2) + pow(imaginary, 2));
+    return sqrt(pow(real, 2) + pow(imaginary, 2));
 }
 
 Complex Complex::operator+(const Complex &rhs) const
 {
-    this->real = this->real + rhs.real;
-    this->imaginary= this->imaginary + rhs.real;
-    return *this;
+    return {this->real + rhs.real, this->imaginary + rhs.imaginary};
 }
 
 Complex Complex::operator-(const Complex &rhs) const
@@ -27,18 +27,25 @@ Complex Complex::operator-(const Complex &rhs) const
 
 Complex Complex::operator*(const Complex &rhs) const
 {
-    return {this->real *  rhs.real, this->imaginary * rhs.imaginary};
+    return {this->real * rhs.real, this->imaginary * rhs.imaginary};
 }
 
 bool Complex::operator==(const Complex &rhs) const
 {
-    if(this->real == rhs.real && this->imaginary == rhs.imaginary)
+    if (this->real == rhs.real && this->imaginary == rhs.imaginary)
         return true;
     else
         return false;
 }
 
-Complex Complex::operator*(const double &sk, const Complex &rhs) const
+Complex operator*(const double &sk, const Complex &rhs)
 {
-    return {sk * rhs.real, sk*rhs.imaginary};
+    return {rhs.real * sk, rhs.imaginary * sk};
+}
+
+ostream &operator<<(ostream &lhs, const Complex &rhs)
+{
+    lhs << "(" << rhs.real << "," << rhs.imaginary << ")" << endl;
+
+    return lhs;
 }

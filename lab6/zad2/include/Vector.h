@@ -10,7 +10,13 @@
 
 using namespace std;
 
-class Vector {
+class Vector
+{
+
+    friend Vector operator*(const double &sk, const Vector &rhs);
+
+    friend ostream &operator<<(ostream &lhs, const Vector &rhs);
+
 private:
     double x, y;
 
@@ -32,6 +38,12 @@ public:
     double operator*(const Vector &rhs) const;
 
     void print(Vector a);
+
+    Vector operator~() const;
+
+    bool operator<(const Vector &rhs) const;
+
+    bool operator>(const Vector &rhs) const;
 };
 
 #endif //ZAD2_VECTOR_H

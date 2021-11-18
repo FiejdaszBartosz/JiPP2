@@ -6,9 +6,17 @@
 #define ZAD2_IMAGINARY_H
 
 #include "iostream"
-#include "math.h"
+#include <cmath>
 
-class Complex {
+using namespace std;
+
+class Complex
+{
+
+    friend Complex operator*(const double &sk, const Complex &rhs);
+
+    friend ostream &operator<<(ostream &lhs, const Complex &rhs);
+
 private:
     double real, imaginary;
 
@@ -17,7 +25,7 @@ public:
 
     Complex(double in_real, double in_imaginary);
 
-    double length();
+    double length() const;
 
     Complex operator+(const Complex &rhs) const;
 
@@ -27,9 +35,8 @@ public:
 
     bool operator==(const Complex &rhs) const;
 
-    Complex operator*(const double &sk, const Complex &rhs) const;
-
 };
 
+Complex operator*(const double &sk, const Complex &rhs);
 
 #endif //ZAD2_IMAGINARY_H
