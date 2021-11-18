@@ -34,5 +34,4 @@ public:
     void print(Vector a);
 };
 
-
 #endif //ZAD2_VECTOR_H
