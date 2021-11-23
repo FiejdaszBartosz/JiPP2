@@ -2,9 +2,14 @@
 // Created by Bartosz Fiejdasz on 23/11/2021.
 //
 
+#include <iostream>
 #include "../include/Figure.h"
+
+using namespace std;
+
 
 int main()
 {
-    return 0;
+    Circle circle(5);
+    cout << "Pole = " << circle.pole();
 }

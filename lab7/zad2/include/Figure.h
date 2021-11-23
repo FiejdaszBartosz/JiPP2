@@ -10,32 +10,28 @@
 
 using namespace std;
 
-struct point {
-    double x, y;
-};
-
-class Figure {
-    string name, color;
+class Figure
+{
 public:
-
-    void print() const;
-
+    virtual double getArea() = 0;
 };
 
-class Circle : public Figure {
+class Circle : public Figure
+{
     double r;
 public:
     Circle(double in_r);
 
-    double pole() const;
+    double getArea();
 };
 
-class Triangle : public Figure {
-    point a, b, c;
+class Rectangle : public Figure
+{
+    double a, b;
 public:
-    double pole() const;
+    Rectangle(double in_a, double in_b);
 
-    double obwod() const;
+    double getArea();
 };
 
 
