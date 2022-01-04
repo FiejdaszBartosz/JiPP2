@@ -1,0 +1,3 @@
+11,biezanow,politechnika,firma1
+12,biezanow,uniwersytet pedagogiczny,firma1
+234,biezanow,wegrzce wielkie,firma2

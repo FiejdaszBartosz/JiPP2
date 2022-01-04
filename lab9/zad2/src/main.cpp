@@ -30,10 +30,6 @@ int main() {
   newPlaylist.printPlaylist();
 
   cout << "--------------------------" << endl;
-  newPlaylist.loopSong();
-  newPlaylist.printPlaylist();
-
-  cout << "--------------------------" << endl;
   newPlaylist.next(); // next nie powoduje zmiany bo utwor jest w loopie
   newPlaylist.printPlaylist();
 }
